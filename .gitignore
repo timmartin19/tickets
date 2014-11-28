@@ -91,3 +91,5 @@ bower_components
 
 db.sqlite3
 bower.json
+
+static_collected
