@@ -18,9 +18,8 @@
                         {{view "select" content=statusOptions
                                         optionLabelPath="content"
                                         optionValuePath="content"
-                                        prompt="Pick a status"
                                         selection=status
-                                        class="form-control"}}
+                                        value=status}}
                     </div>
                 {{else}}
                     {{status}}
@@ -32,13 +31,12 @@
             <div class="col-sm-10">
                 {{#if editing}}
                     <div class="form-group">
-                        {{view "select"
-                            value=client
-                            contentBinding="clients"
-                            prompt="Choose existing"
-                            optionLabelPath="content.fullName"
-                            optionValuePath="content"
-                            class="form-control"}}
+                        {{view Ember.Select content=users
+                                            optionLabelPath="content.fullName"
+                                            optionValuePath="content.id"
+                                            prompt="Pick a user:"
+                                            selection=client.content}}
+
                     </div>
                 {{else}}
                     {{client.fullName}}
@@ -50,13 +48,11 @@
             <div class="col-sm-10">
                 {{#if editing}}
                     <div class="form-group">
-                        {{view "select" content=consultants
-                                        optionLabelPath="content.fullName"
-                                        optionValuePath="content"
-                                        prompt="Pick a consultant:"
-                                        selection=consultant
-                                        value=consultant
-                                        class="form-control"}}
+                        {{view Ember.Select content=users
+                                            optionLabelPath="content.fullName"
+                                            optionValuePath="content.id"
+                                            prompt="Pick a user:"
+                                            selection=consultant.content}}
                     </div>
                 {{else}}
                     {{consultant.fullName}}
@@ -67,9 +63,7 @@
             <div class="col-sm-2 ticket-title">Due Date:</div>
             <div class="col-sm-10">
                 {{#if editing}}
-                    <div class="form-group">
-                        {{input type="text" value=due_date class="form-control"}}
-                    </div>
+                    {{view Tickets.DateField date=due_date}}
                 {{else}}
                     {{formattedDueDate}}
                 {{/if}}
@@ -88,7 +82,7 @@
             <div class="col-sm-10">
                 {{#if editing}}
                     <div class="form-group">
-                        {{textarea class="form-control" value=description}}
+                        {{textarea class="form-control" value=description rows="6"}}
                     </div>
                 {{else}}
                     {{description}}
@@ -100,7 +94,7 @@
             <div class="col-sm-10">
                 {{#if editing}}
                     <div class="form-group">
-                        {{textarea class="form-control" value=progress_report}}
+                        {{textarea class="form-control" value=progress_report rows="6"}}
                     </div>
                 {{else}}
                     {{progress_report}}

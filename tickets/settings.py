@@ -101,4 +101,5 @@ BOWER_INSTALLED_APPS = (
     'ember-data#1.0.0-beta.12',
     'bootstrap',
     'moment',
+    'pikady',
 )

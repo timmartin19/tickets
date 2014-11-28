@@ -11,6 +11,9 @@ Tickets.TicketController = Ember.ObjectController.extend({
             this.get('model').save();
         }
     },
-
+    users: function(){
+        return this.get('store').find('user');
+    }.property('model'),
+    statusOptions: ['not started', 'in progress', 'finished'],
     editing: false
 });
