@@ -7,10 +7,29 @@
 
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}"/>
     <script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
+    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-    {% block content %}
-        HERE
-    {% endblock %}
+
+    <script type="text/x-handlebars" data-template-name="tickets">
+        {% include 'ember-templates/tickets-base.html' %}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="tickets/index">
+        {% include 'ember-templates/tickets-index.html' %}
+    </script>
+
+    <script type="text/x-handlebars" id="components/ticket-container">
+        {% include 'ember-components/ticket.html' %}
+    </script>
+
+    <script type="text/javascript" src="{% static 'handlebars/handlebars.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ember/ember.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ember-data/ember-data.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'routers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'components.js' %}"></script>
 </body>
 </html>

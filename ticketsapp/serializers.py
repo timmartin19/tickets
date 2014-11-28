@@ -8,12 +8,11 @@ class TicketSerializer(ModelSerializer):
     class Meta:
         model = Ticket
         fields = ('client', 'consultant', 'title', 'description', 'due_date',
-        'id', 'date_submitted', 'last_updated', 'status', 'progress_report',
-        'finished')
+                  'id', 'date_submitted', 'last_updated', 'status', 'progress_report',
+                  'finished')
 
 
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'is_superuser',
-        'is_staff')
+        fields = ('id', 'username', 'first_name', 'last_name', 'is_superuser', 'is_staff')
