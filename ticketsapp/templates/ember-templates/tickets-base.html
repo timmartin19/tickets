@@ -1,6 +1,6 @@
 {% verbatim %}
     <div class="container-fluid">
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -23,6 +23,39 @@
             </div><!--/.container-fluid -->
         </nav>
 
-        {{outlet}}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">{{#link-to 'tickets'}}Tickets{{/link-to}}</div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <!--Ticket navigation panel-->
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                Select a ticket
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    {{#each}}
+                                        <li>{{#link-to 'ticket' id}}{{shortTitle}}{{/link-to}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        {{outlet}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav navbar-default navbar-fixed-bottom">
+            <ul class="nav navbar-nav">
+                <li>Created by Tim Martin: Cleveland Web Consulting</li>
+            </ul>
+        </div>
     </div>
 {% endverbatim %}

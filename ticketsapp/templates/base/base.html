@@ -6,6 +6,7 @@
     <title>Martin Consulting</title>
 
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/tickets.css' %}"/>
     <script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
     <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 </head>
@@ -19,13 +20,18 @@
         {% include 'ember-templates/tickets-index.html' %}
     </script>
 
-    <script type="text/x-handlebars" id="components/ticket-container">
-        {% include 'ember-components/ticket.html' %}
+    <script type="text/x-handlebars" data-template-name="ticket">
+        {% include 'ember-templates/ticket.html' %}
+    </script>
+
+    <script type="text/x-handlebars" id="components/tickets-table">
+        {% include 'ember-components/tickets-table.html' %}
     </script>
 
     <script type="text/javascript" src="{% static 'handlebars/handlebars.js' %}"></script>
     <script type="text/javascript" src="{% static 'ember/ember.js' %}"></script>
     <script type="text/javascript" src="{% static 'ember-data/ember-data.js' %}"></script>
+    <script type="text/javascript" src="{% static 'moment/moment.js' %}"></script>
     <script type="text/javascript" src="{% static 'app.js' %}"></script>
     <script type="text/javascript" src="{% static 'models.js' %}"></script>
     <script type="text/javascript" src="{% static 'routers.js' %}"></script>

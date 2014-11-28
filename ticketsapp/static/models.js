@@ -24,19 +24,30 @@ Tickets.Ticket = DS.Model.extend({
         }else{
             return this.get('title');
         }
-    }.property('title')
+    }.property('title'),
+    formattedDueDate: function(){
+        return moment(this.get('due_date')).format('MMM Do, YYYY')
+    }.property('due_date'),
+    formattedDateSubmitted: function(){
+        return moment(this.get('date_submitted')).format('MMM Do, YYYY')
+    }.property('date_submitted'),
+    formattedLastUpdated: function(){
+        return moment(this.get('last_updated')).format('MMM Do, YYYY')
+    }.property('last_updated')
 });
 
 Tickets.User = DS.Model.extend({
     client_tickets: DS.hasMany('ticket', {
-        async: true
+        inverse: 'client'
     }),
     consultant_tickets: DS.hasMany('ticket', {
-        async: true
+        inverse: 'consultant'
     }),
     username: DS.attr('string'),
     first_name: DS.attr('string'),
     last_name: DS.attr('string'),
+    is_superuser: DS.attr('boolean'),
+    is_staff: DS.attr('boolean'),
     fullName: function(){
         return this.get('first_name') + " " + this.get('last_name');
     }.property('first_name', 'last_name')

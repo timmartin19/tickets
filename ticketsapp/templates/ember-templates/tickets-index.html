@@ -1,9 +1,7 @@
 {% verbatim %}
 <div class="row">
     <div class="col-sm-12">
-        {{#each}}
-            {{ticket-container ticket=this}}
-        {{/each}}
+        {{tickets-table tickets=this}}
     </div>
 </div>
 {% endverbatim %}

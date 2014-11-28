@@ -1,0 +1,14 @@
+.footer-ad {
+
+}
+
+.row-divider {
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, .1);
+    border-bottom-width: 1px;
+    margin-top: .5em;
+}
+
+.ticket-title {
+    font-weight: bolder;
+}

@@ -1,0 +1,45 @@
+{% verbatim %}
+<table class="table table-condensed table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Client</th>
+            <th>Consultant</th>
+            <th>Finished?</th>
+            <th>Due date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each ticket in tickets}}
+            <tr>
+                <td>
+                    {{#link-to 'ticket' ticket.id}}
+                        {{ticket.title}}
+                    {{/link-to}}
+                </td>
+                <td>
+                    {{ticket.status}}
+                </td>
+                <td>
+                    {{ticket.client.fullName}}
+                </td>
+                <td>
+                    {{ticket.consultant.fullName}}
+                </td>
+                <td>
+                    {{#if ticket.finished}}
+                        <span class="glyphicon glyphicon-check text-success"></span>
+                    {{else}}
+                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                    {{/if}}
+                </td>
+                <td>
+                    {{ticket.due_date}}
+                </td>
+    </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{% endverbatim %}
