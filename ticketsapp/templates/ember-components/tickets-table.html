@@ -6,7 +6,6 @@
             <th>Status</th>
             <th>Client</th>
             <th>Consultant</th>
-            <th>Finished?</th>
             <th>Due date</th>
         </tr>
     </thead>
@@ -28,14 +27,7 @@
                     {{ticket.consultant.fullName}}
                 </td>
                 <td>
-                    {{#if ticket.finished}}
-                        <span class="glyphicon glyphicon-check text-success"></span>
-                    {{else}}
-                        <span class="glyphicon glyphicon-remove text-danger"></span>
-                    {{/if}}
-                </td>
-                <td>
-                    {{ticket.due_date}}
+                    {{ticket.formattedDueDate}}
                 </td>
     </tr>
         {{/each}}

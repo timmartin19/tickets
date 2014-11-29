@@ -37,8 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'ticketsapp',
     'djangobower',
+    'password_reset',
+    'ticketsapp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +104,16 @@ BOWER_INSTALLED_APPS = (
     'moment',
     'pikady',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+}
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/management/'
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2  # Two weeks
+
+APPEND_SLASH = False
+
+DEFAULT_FROM_EMAIL = ''

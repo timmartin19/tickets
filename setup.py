@@ -17,5 +17,6 @@ setup(
     author='Tim Martin',
     author_email='tim.martin@vertical-knowledge.com',
     description='A web app for managing tickets submitted and completed',
-    install_requires=['django', 'djangorestframework', 'django-filter', 'drf-nested-routers']
+    install_requires=['django', 'djangorestframework', 'django-filter', 'drf-nested-routers', 'django-bower',
+                      'django-password-reset', 'fabric', 'fabric-virtualenv']
 )

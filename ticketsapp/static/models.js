@@ -17,7 +17,9 @@ Tickets.Ticket = DS.Model.extend({
     last_updated: DS.attr('date'),
     status: DS.attr('string'),
     progress_report: DS.attr('string'),
-    finished: DS.attr('boolean'),
+    finished: function(){
+        return this.get('status') == 'finished';
+    }.property('status'),
     shortTitle: function(){
         if(this.get('title').length >= 23){
             return this.get('title').substr(0, 20) + '...';
@@ -48,6 +50,10 @@ Tickets.User = DS.Model.extend({
     last_name: DS.attr('string'),
     is_superuser: DS.attr('boolean'),
     is_staff: DS.attr('boolean'),
+    is_active: DS.attr('boolean', {
+        defaultValue: true
+    }),
+    email: DS.attr('string'),
     fullName: function(){
         return this.get('first_name') + " " + this.get('last_name');
     }.property('first_name', 'last_name')

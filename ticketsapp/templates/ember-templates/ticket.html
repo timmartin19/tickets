@@ -29,12 +29,11 @@
         <div class="row row-divider">
             <div class="col-sm-2 ticket-title">Client:</div>
             <div class="col-sm-10">
-                {{#if editing}}
+                {{#if editingAndStaff}}
                     <div class="form-group">
-                        {{view Ember.Select content=users
+                        {{view Ember.Select content=controllers.base.clients
                                             optionLabelPath="content.fullName"
                                             optionValuePath="content.id"
-                                            prompt="Pick a user:"
                                             selection=client.content}}
 
                     </div>
@@ -48,10 +47,9 @@
             <div class="col-sm-10">
                 {{#if editing}}
                     <div class="form-group">
-                        {{view Ember.Select content=users
+                        {{view Ember.Select content=controllers.base.consultants
                                             optionLabelPath="content.fullName"
                                             optionValuePath="content.id"
-                                            prompt="Pick a user:"
                                             selection=consultant.content}}
                     </div>
                 {{else}}

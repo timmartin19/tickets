@@ -1,0 +1,6 @@
+{% load i18n %}{% load url from future %}{% blocktrans %}Dear {{ first_name }} {{ last_name }},{% endblocktrans %}
+
+{% blocktrans with domain=site.domain %}Congratulations! You now have an account for http://martin-consulting.org{% endblocktrans %}
+
+Username: {{username}}
+Password: {{password}}
