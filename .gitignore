@@ -93,3 +93,6 @@ db.sqlite3
 bower.json
 
 static_collected
+fabfile_deets.py
+
+tickets/production.py
