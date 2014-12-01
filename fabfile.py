@@ -46,7 +46,7 @@ def deploy_conf():
     put(os.path.join(base_dir, 'deployment', 'httpd.conf'),
         '/home/{0}/webapps/{1}_app/apache2/conf'.format(webfaction_account_name, project_name))
     put(os.path.join(base_dir, 'deployment', 'wsgi.py'),
-        '/home/{0}/webapps/{1}_app/{1}_app/{2}'.format(webfaction_account_name, project_name, app_name))
+        '/home/{0}/webapps/{1}_app/{1}_app/{1}'.format(webfaction_account_name, project_name))
 
 @run_in_local_dir
 def deploy_static():
@@ -64,25 +64,33 @@ def create_virtual_environment():
     with cd(webapp_path):
         run('virtualenv-2.7 {0}'.format(venv_name))
 
-
 @run_in_local_dir
-def deploy():
-    # local("pip freeze > requirements.txt -f 'http://vkpypi:8EWash!@pypi.vkspider.com/packages'")
+def deploy_project():
     pack()
     put('{0}.zip'.format(project_name), '/home/{0}/'.format(webfaction_account_name))
     run('unzip -o /home/{0}/{1}.zip -d {2}'.format(webfaction_account_name, project_name, webapp_path))
     with cd(webapp_path):
         with prefix('workon {0}'.format(venv_name)):
-            run('pip install -r requirements.txt')
+            run('python setup.py install')
+            run('pip uninstall martin-tickets')
+    #run('rm /home/{0}/{1}.zip'.format(webfaction_account_name, project_name))
+    #local('rm {0}.zip'.format(project_name))
     deploy_conf()
     deploy_settings()
+    restart_apache()
+
+
+@run_in_local_dir
+def deploy():
+    # local("pip freeze > requirements.txt -f 'http://vkpypi:8EWash!@pypi.vkspider.com/packages'")
+    deploy_project()
     deploy_static()
     restart_apache()
-    run('rm /home/{0}/{1}.zip'.format(webfaction_account_name, project_name))
-    local('rm {0}.zip'.format(project_name))
 
 @run_in_local_dir
 def deploy_settings():
+    put('{0}/settings.py'.format(project_name),
+        '/home/{1}/webapps/{0}_app/{0}_app/{0}'.format(project_name, webfaction_account_name))
     put('{0}/production.py'.format(project_name),
         '/home/{1}/webapps/{0}_app/{0}_app/{0}'.format(project_name, webfaction_account_name))
 

@@ -1,2 +1,5 @@
 __author__ = 'Tim Martin'
-from settings import *
+from tickets.settings import *
+
+DEBUG = True
+TEMPLATE_DEBUG = True

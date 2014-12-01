@@ -20,11 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'gq7db7&$_%v$djs*ks4@e+u@v(nm33^5nq_wqgduw-izsp4#mk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.localhost:8000',
+    '.127.0.0.1:8000'
+]
 
 
 # Application definition
@@ -39,6 +42,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'djangobower',
     'password_reset',
+    'compressor',
     'ticketsapp',
 )
 
@@ -91,6 +95,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'djangobower.finders.BowerFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 BOWER_COMPONENTS_ROOT = BASE_DIR
@@ -102,7 +107,7 @@ BOWER_INSTALLED_APPS = (
     'ember-data#1.0.0-beta.12',
     'bootstrap',
     'moment',
-    'pikady',
+    'pikaday',
 )
 
 REST_FRAMEWORK = {

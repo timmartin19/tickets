@@ -1,0 +1,2 @@
+recursive-include ticketsapp/static *
+recursive-include ticketsapp/templates *

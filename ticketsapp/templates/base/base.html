@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -10,8 +11,7 @@
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'pikaday/css/pikaday.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/tickets.css' %}"/>
-    <script type="text/javascript" src='{% static 'jquery/dist/jquery.min.js' %}'></script>
-    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
 
     </script>
@@ -46,16 +46,19 @@
             {% include 'ember-components/tickets-table.html' %}
         </script>
 
-        <script type="text/javascript" src="{% static 'handlebars/handlebars.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'ember/ember.prod.js' %}"></script>
-        <script type="text/javascript" src="{% static 'ember-data/ember-data.prod.js' %}"></script>
-        <script type="text/javascript" src="{% static 'moment/moment.js' %}"></script>
-        <script type="text/javascript" src="{% static 'pikaday/pikaday.js' %}"></script>
-        <script type="text/javascript" src="{% static 'app.js' %}"></script>
-        <script type="text/javascript" src="{% static 'models.js' %}"></script>
-        <script type="text/javascript" src="{% static 'routers.js' %}"></script>
-        <script type="text/javascript" src="{% static 'controllers.js' %}"></script>
-        <script type="text/javascript" src="{% static 'components.js' %}"></script>
+        {% compress js %}
+            <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'handlebars/handlebars.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'ember/ember.prod.js' %}"></script>
+            <script type="text/javascript" src="{% static 'ember-data/ember-data.prod.js' %}"></script>
+            <script type="text/javascript" src="{% static 'moment/moment.js' %}"></script>
+            <script type="text/javascript" src="{% static 'pikaday/pikaday.js' %}"></script>
+            <script type="text/javascript" src="{% static 'app.js' %}"></script>
+            <script type="text/javascript" src="{% static 'models.js' %}"></script>
+            <script type="text/javascript" src="{% static 'routers.js' %}"></script>
+            <script type="text/javascript" src="{% static 'controllers.js' %}"></script>
+            <script type="text/javascript" src="{% static 'components.js' %}"></script>
+        {% endcompress %}
     {% endblock %}
 </body>
 </html>
