@@ -1,16 +1,29 @@
 {% verbatim %}
+<label>
+    {{input type="checkbox" class="checkbox" checked=viewFinished}} view finished?
+</label>
 <table class="table table-condensed table-bordered">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Client</th>
-            <th>Consultant</th>
-            <th>Due date</th>
+            <th>Title
+                <span class="glyphicon glyphicon-sort sort-btn" {{action 'sortBy' 'title' on="click"}}></span>
+            </th>
+            <th>Status
+                <span class="glyphicon glyphicon-sort sort-btn" {{action 'sortBy' 'status' on="click"}}></span>
+            </th>
+            <th>Client
+                <span class="glyphicon glyphicon-sort sort-btn" {{action 'sortBy' 'client.fullName' on="click"}}></span>
+            </th>
+            <th>Consultant
+                <span class="glyphicon glyphicon-sort sort-btn" {{action 'sortBy' 'consultant.fullName' on="click"}}></span>
+            </th>
+            <th>Due date
+                <span class="glyphicon glyphicon-sort sort-btn" {{action 'sortBy' 'due_date' on="click"}}></span>
+            </th>
         </tr>
     </thead>
     <tbody>
-        {{#each ticket in tickets}}
+        {{#each ticket in viewableTickets}}
             <tr>
                 <td>
                     {{#link-to 'ticket' ticket.id}}

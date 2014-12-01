@@ -96,3 +96,5 @@ static_collected
 fabfile_deets.py
 
 tickets/production.py
+
+*.zip

@@ -24,6 +24,13 @@ Tickets.BaseRoute = Ember.Route.extend({
 Tickets.TicketsRoute = Ember.Route.extend({
     model: function(){
         return this.store.find('ticket');
+    },
+    actions: {
+        loading: function(transition, originRoute) {
+            $('#usersTabLink').removeClass('active');
+            $('#ticketsTabLink').addClass('active');
+            return true;
+        }
     }
 });
 
@@ -36,6 +43,13 @@ Tickets.TicketRoute = Ember.Route.extend({
 Tickets.UsersRoute = Ember.Route.extend({
     model: function(){
         return this.store.find('user');
+    },
+    actions: {
+        loading: function(transition, originRoute) {
+            $('#usersTabLink').addClass('active');
+            $('#ticketsTabLink').removeClass('active');
+            return true;
+        }
     }
 });
 

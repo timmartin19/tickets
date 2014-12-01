@@ -10,6 +10,7 @@ from ticketsapp.models import Ticket
 from ticketsapp.permissions import IsSuperuserOwnerOrReadOnly, TicketPermission
 from ticketsapp.serializers import UserSerializer, TicketSerializer
 
+
 def landing_view(request):
     return render_to_response('index.html')
 

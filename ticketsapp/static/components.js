@@ -1,7 +1,34 @@
 /**
  * Created by Tim Martin on 11/28/14.
  */
+
+
 Tickets.TicketContainerComponent = Ember.Component.extend({});
+
+Tickets.TicketsTableComponent = Ember.Component.extend({
+    viewableTickets: function(){
+        var ticketsTableComponent = this;
+        var ticketsToDisplay = this.get('tickets').filter(function(ticket, index, self) {
+            if (!ticket.get('finished') || ticketsTableComponent.get('viewFinished')) { return true; }
+        });
+        return  Ember.ArrayController.create({
+            model: ticketsToDisplay,
+            sortProperties: [ticketsTableComponent.get('sortProperty')],
+            sortAscending: ticketsTableComponent.get('sortAscending')
+        });
+    }.property('tickets', 'viewFinished', 'sortProperty', 'sortAscending'),
+    actions: {
+        sortBy: function(property){
+            if(this.get('sortProperty') == property) {
+                this.set('sortAscending', !this.get('sortAscending'));
+            }
+            this.set('sortProperty', property);
+        }
+    },
+    viewFinished: false,
+    sortProperty: ['due_date'],
+    sortAscending: false
+});
 
 Tickets.DateField = Ember.TextField.extend({
     picker: null,

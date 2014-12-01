@@ -12,3 +12,7 @@
 .ticket-title {
     font-weight: bolder;
 }
+
+.sort-btn {
+    cursor: pointer;
+}

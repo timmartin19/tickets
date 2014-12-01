@@ -11,8 +11,8 @@ router.register(r'user', UserViewSet)
 
 urlpatterns = patterns(
     '',
-    url(r'^/?$', 'ticketsapp.views.landing_view'),
-    url(r'^management/$', 'ticketsapp.views.index_view', name="home"),
+    url(r'^/?$', 'ticketsapp.views.landing_view', name="home"),
+    url(r'^management/?$', 'ticketsapp.views.index_view', name="tickets-dashboard"),
     url(r'^api/', include(router.urls)),
     url(r'^login/?$', 'ticketsapp.views.login_view', name='login-view'),
     url(r'^logout/?$', 'ticketsapp.views.logout_view', name='logout-view'),

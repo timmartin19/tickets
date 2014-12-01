@@ -36,7 +36,7 @@ Tickets.TicketsController = Ember.ArrayController.extend({
 });
 
 Tickets.TicketController = Ember.ObjectController.extend({
-    needs: ['base'],
+    needs: ['base', 'tickets'],
     actions: {
         edit: function(){
             this.set('editing', true);
